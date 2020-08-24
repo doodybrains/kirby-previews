@@ -1,4 +1,4 @@
-# Kirby Previews
+# Kirby Previews (Adapted)
 
 Add some missing structure previews in the panel.
 
