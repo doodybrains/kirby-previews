@@ -1,6 +1,6 @@
 <template>
 	<div class="k-structure-field-preview">
-        <div class="structure-entries-preview">{{ entriesString }}</div>   
+        <div class="structure-entries-preview" v-html="entriesString"></div>
     </div>
 </template>
 
@@ -11,10 +11,23 @@ export default {
     },
     computed: {
     	entriesCount() {
-            return Object.keys(this.value).length
+            return this.value
         },
         entriesString() {
-            return this.entriesCount > 0 ? this.entriesCount + this.entryString(this.entriesCount) : ''
+            console.log(this.entriesCount)
+						if (this.entriesCount[0].text) {
+							return (
+								this.entriesCount[0].text + "<br><br>" + "TYPE: " + this.entriesCount[0].width
+							)
+						}
+
+						if (this.entriesCount[0].image) {
+							return (
+								'<img style="width: 100%;" src=' + this.entriesCount[0].image[0].icon.url + '/> <br> TYPE: ' + this.entriesCount[0].width
+							)
+						}
+						if (this.entriesCount[0].videourl) return this.entriesCount[0].videourl
+
         }
     },
     methods: {
